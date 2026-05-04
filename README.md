@@ -191,9 +191,8 @@ This project is designed to grow. Planned extensions:
 
 ## 👤 Author
 
-**[Your Name]** — B.Tech CSE, [Your College]  
-Course: CSE3156 Digital Forensics | PTW Penetration Testing  
-GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+**[J Prasannajit]** — B.Tech CSE, [ITER, S'O'A]    
+GitHub: [@prasannajit10](https://github.com/prasannajit10)
 
 ---
 
