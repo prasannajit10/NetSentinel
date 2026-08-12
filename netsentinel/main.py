@@ -68,6 +68,7 @@ def main():
     from netsentinel.rules    import run_all_rules
     from netsentinel.hasher   import compute_hashes, write_custody_log
     from netsentinel.reporter import generate_reports
+    from netsentinel.dashboard import render_dashboard
 
     # ── Step 1: Acquire packets ──────────────────────────────────────────────
     if args.pcap:
@@ -121,21 +122,9 @@ def main():
     print(f"[+] HTML report : {html_path}")
     print(f"[+] JSON export : {json_path}")
 
-    # ── Step 7: Terminal summary ─────────────────────────────────────────────
-    print("\n" + "=" * 55)
-    print("  NETSENTINEL SUMMARY")
-    print("=" * 55)
-    print(f"  Packets analysed : {stats['total_packets']:,}")
-    print(f"  Anomalies found  : {len(findings)}")
-    crit = sum(1 for f in findings if f["severity"] == "CRITICAL")
-    high = sum(1 for f in findings if f["severity"] == "HIGH")
-    print(f"  CRITICAL         : {crit}")
-    print(f"  HIGH             : {high}")
-    print("=" * 55)
-    for f in findings:
-        print(f"  [{f['severity']:<8}] Rule {f['rule']} — {f['name']}")
-        print(f"             {f['detail'][:70]}")
-    print("=" * 55)
+    # ── Step 7: Terminal dashboard ────────────────────────────────────────────
+    print()
+    render_dashboard(stats=stats, findings=findings, hashes=hashes, source_file=source_file)
 
 
 if __name__ == "__main__":

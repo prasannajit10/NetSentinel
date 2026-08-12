@@ -19,7 +19,7 @@ def read_pcap(filepath: str) -> list:
     (>500 MB) consider using PcapReader as a streaming iterator instead.
     """
     try:
-        from scapy.utils import rdpcap
+        from scapy.all import rdpcap
         packets = rdpcap(filepath)
         print(f"[+] Loaded {len(packets)} packets from {filepath}")
         return list(packets)
